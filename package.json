@@ -1,34 +1,37 @@
 {
 	"name": "inputmanager",
-	"version": "1.0.3",
+	"version": "2.0.0",
 	"description": "An input manager using FFI for node",
 	"main": "./dist/index",
-	"types":"./dist/index.d.ts",
+	"types": "./dist/index.d.ts",
+	"repository": "https://github.com/JVisona/InputManager",
+	"author": "JVisona (https://github.com/JVisona)",
+	"license": "MIT",
 	"scripts": {
 		"build": "tsc",
-		"prepublish": "npm run build",
-		"run": "node ./dist/main.js",
-		"test": "npm run build && npm run run"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/JVisona/InputManager"
+		"prepublish": "yarn run build",
+		"run": "node ./dist/index.js"
 	},
 	"keywords": [
 		"node",
 		"keys",
 		"input-manager",
-		"ffi"
+		"inputmanager",
+		"ffi",
+		"mouse",
+		"keyboard",
+		"input"
 	],
-	"author": "JVisona (https://github.com/JVisona)",
-	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/JVisona/InputManager/issues"
 	},
 	"homepage": "https://github.com/JVisona/InputManager",
+	"devDependencies": {
+		"@types/ffi-napi": "^2.4.0",
+		"@types/node": "^10.12.0",
+		"tslint-config-airbnb": "^5.11.0"
+	},
 	"dependencies": {
-		"@types/ffi": "^0.2.0",
-		"ffi": "^2.2.0",
-		"tslint-config-airbnb": "^5.9.2"
+		"ffi-napi": "^2.4.3"
 	}
 }
