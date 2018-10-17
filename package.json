@@ -1,6 +1,6 @@
 {
 	"name": "inputmanager",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "An input manager using FFI for node",
 	"main": "./dist/index",
 	"types": "./dist/index.d.ts",
@@ -9,7 +9,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "tsc",
-		"prepublish": "yarn run build",
+		"prepare": "yarn run build",
 		"run": "node ./dist/index.js"
 	},
 	"keywords": [

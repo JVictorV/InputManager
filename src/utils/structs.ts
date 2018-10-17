@@ -3,8 +3,6 @@ import StrType from 'ref-struct-di';
 
 const StructType = StrType(ref);
 
-/* tslint:disable */
-
 export const KeyBoardStruct: StrType = new StructType({
 	type: ref.types.uint64, //* WHY THAT NEEDS TO BE UINT64?
 	wVK: ref.types.short, //* WORD = SHORT?
@@ -29,6 +27,16 @@ export const PointStruct: StrType = new StructType({
 	y: ref.types.long
 });
 
+export const RectStruct: StrType = new StructType({
+	left: ref.types.long,
+	top: ref.types.long,
+	right: ref.types.long,
+	bottom: ref.types.long
+});
+
+export const HANDLE = ref.refType(ref.types.void);
+export const LPRECT = ref.refType(RectStruct);
+
 /*
 typedef struct tagKEYBDINPUT {
   WORD      wVk;
@@ -51,5 +59,12 @@ typedef struct tagPOINT {
   LONG x;
   LONG y;
 } POINT, *PPOINT;
+
+typedef struct _RECT {
+  LONG left;
+  LONG top;
+  LONG right;
+  LONG bottom;
+} RECT, *PRECT;
 
 */

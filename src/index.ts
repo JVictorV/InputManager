@@ -1,5 +1,6 @@
 import * as K from './managers/keyboardManager';
 import * as M from './managers/mouseManager';
+import * as W from './managers/WindowManager';
 import * as U from './utils/enums';
 import { getPosition } from './utils/screenHelper';
 
@@ -7,8 +8,8 @@ export { VKC } from "./utils/enums";
 
 export class Mouse {
 	constructor(
-		public screenWidth: number = 1366,
-		public screenHeight: number = 768
+		public screenWidth: number = new Window().GetWindowRect().right,
+		public screenHeight: number = new Window().GetWindowRect().bottom
 	) {}
 	Move(PosX: number, PosY: number, debug?: boolean): void {
 		let x = getPosition(PosX, this.screenWidth);
@@ -34,11 +35,26 @@ export class Keyboard {
 		return K.SendKey(Key, Time, Debug);
 	}
 
-	SendUpperKey(Key: U.VKC, Time?: number, Debug?: boolean) {
+	SendUpperKey(Key: U.VKC, Time?: number, Debug?: boolean): void {
 		return K.SendUpperKey(Key, Time, Debug);
 	}
 
-	SendMultipleKeys(Keys: string) {
+	SendMultipleKeys(Keys: string): void {
 		return K.SendKeyChain(Keys);
+	}
+}
+
+export class Window {
+	GetDesktopWindow(): Buffer {
+		return W.GetDesktopWindow();
+	}
+	GetWindowRect(): {
+		left: number;
+		top: number;
+		right: number;
+		bottom: number;
+		"ref.buffer": Buffer;
+	} {
+		return W.GetWindowRect();
 	}
 }
