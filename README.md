@@ -1,37 +1,71 @@
 # InputManager
 
-### Instalation
+A NodeJS module to manage inputs using [FFI-NAPI](https://github.com/node-ffi-napi/node-ffi-napi)
+
+## Installation
+>$ yarn add inputmanager 
 
 > $ npm i inputmanager
+ 
+## Features
 
-### Usage:
+- Mouse
+	- Move
+	- Right Click
+	- Left Click
+- Keyboard
+	- Send Key
+	- Send Keys in CapsLock
+	- Send Multiple Keys (with symbols support)
+	- KeyCode from string
+- Screen
+	- Desktop HWND
+	- Screen Width and Height
+	
+## Usage
 
-#### TypeScript
+### Typescript
 ```ts
-import {Keyboard, Mouse, VKC } from "inputmanager";
+import { Keyboard,  Mouse,  VKC,  Window } from  "inputmanager";
 
-const ScreenW = 1366;
-const ScreenH = 768;
+const mouse:Mouse = new Mouse();
+const keyboard:Keyboard = new Keyboard();
+const window:Window = new Window();
 
-const MManager = new Mouse(ScreenW, ScreenH);
-const KManager = new Keyboard();
+mouse.Move(800, 600);
+mouse.LeftClick();
+mouse.RightClick();
 
-MManager.Move(800, 600);
-MManager.LeftClick();
+const XkeyCode: number = keyboard.GetKeyCode("X");
 
-KManager.SendMultipleKeys("Welcome Input Manager");
+keyboard.SendKey(XkeyCode);
+keyboard.SendUpperKey(VKC.X);
+keyboard.SendMultipleKeys("Input Manager");
+
+let windowHandle:Buffer = window.GetDesktopWindow();
+let screenRect:any = window.GetWindowRect();
+
+console.log(`${screenRect.right}x${screenRect.bottom}`);
 ```
-
-#### JavaScript
 ```js
-var inputmanager = require("inputmanager")
-var ScreenW = 1366;
-var ScreenH = 768;
-var MManager = new inputmanager.Mouse();
-var KManager = new inputmanager.Keyboard();
+const { Keyboard, Mouse, VKC, Window } = require("inputmanager");
 
-MManager.Move(800, 600);
-MManager.LeftClick();
+const mouse = new Mouse();
+const keyboard = new Keyboard();
+const window = new Window();
 
-KManager.SendMultipleKeys("Welcome Input Manager");
+mouse.Move(800, 600);
+mouse.LeftClick();
+mouse.RightClick();
+
+const XkeyCode = keyboard.GetKeyCode("X");
+
+keyboard.SendKey(XkeyCode);
+keyboard.SendUpperKey(VKC.X);
+keyboard.SendMultipleKeys("Input Manager");
+
+let windowHandle = window.GetDesktopWindow();
+let screenRect = window.GetWindowRect();
+
+console.log(`${screenRect.right}x${screenRect.bottom}`);
 ```
