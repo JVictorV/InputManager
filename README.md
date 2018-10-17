@@ -47,6 +47,7 @@ let screenRect:any = window.GetWindowRect();
 
 console.log(`${screenRect.right}x${screenRect.bottom}`);
 ```
+### Javascript
 ```js
 const { Keyboard, Mouse, VKC, Window } = require("inputmanager");
 
