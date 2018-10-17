@@ -5,7 +5,7 @@ const StructType = StrType(ref);
 
 /* tslint:disable */
 
-export const KeyBoardStruct: any = new StructType({
+export const KeyBoardStruct: StrType = new StructType({
 	type: ref.types.uint64, //* WHY THAT NEEDS TO BE UINT64?
 	wVK: ref.types.short, //* WORD = SHORT?
 	wScan: ref.types.short,
@@ -14,7 +14,7 @@ export const KeyBoardStruct: any = new StructType({
 	dwExtraInfo: ref.types.ulong
 });
 
-export const MouseStruct: any = new StructType({
+export const MouseStruct: StrType = new StructType({
 	type: ref.types.uint64,
 	dx: ref.types.long,
 	dy: ref.types.long,
@@ -24,7 +24,7 @@ export const MouseStruct: any = new StructType({
 	dwExtraInfo: ref.types.ulong
 });
 
-export const PointStruct: any = new StructType({
+export const PointStruct: StrType = new StructType({
 	x: ref.types.long,
 	y: ref.types.long
 });
